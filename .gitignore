@@ -1,4 +1,4 @@
-# Python files
+# Python bytecode files
 *.pyc
 *.pyo
 __pycache__/
@@ -12,7 +12,7 @@ env/
 ENV/
 .venv/
 
-# IDEs
+# IDE files
 .vscode/
 .idea/
 *.swp
@@ -20,9 +20,12 @@ ENV/
 # Django specific files
 db.sqlite3
 /media/
-staticfiles/
 static/
-*.log
+staticfiles/
+
+# Migrations (exclude all migration files)
+**/migrations/*
+!**/migrations/__init__.py
 
 # Coverage reports
 htmlcov/
@@ -52,14 +55,12 @@ var/
 # Celery
 celerybeat-schedule
 
-# Deployment
+# Deployment files
 *.bak
 *.orig
 *.old
 
-# MacOS
+# System files
 .DS_Store
-
-# Windows
 Thumbs.db
 desktop.ini

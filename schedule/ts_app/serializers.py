@@ -12,6 +12,8 @@ class TeacherImageSerializer(serializers.ModelSerializer):
         fields = ['image']
 
 class LessonScheduleSerializer(serializers.ModelSerializer):
+    classroom = serializers.CharField(source='classroom.name', read_only=True)
+
     class Meta:
         model = LessonSchedule
         fields = '__all__'
