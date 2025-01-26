@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Group Education Schedule</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>Group Education Schedule</h1>
+        <div id="groupList" class="group-list"></div>
+        <div id="scheduleView" class="schedule-view hidden">
+            <button id="backButton" class="back-button">Back to Groups</button>
+            <div id="scheduleList" class="schedule-list"></div>
+        </div>
+    </div>
+    <script src="{% static 'script.js' %}"></script>
+</body>
+</html>
+
