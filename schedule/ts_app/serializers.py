@@ -1,3 +1,4 @@
+# serializers.py
 from rest_framework import serializers
 from .models import *
 
@@ -6,10 +7,6 @@ class ClassroomSerializer(serializers.ModelSerializer):
         model = Classroom
         fields = '__all__'
 
-class TeacherImageSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = TeacherImage
-        fields = ['image']
 
 class LessonScheduleSerializer(serializers.ModelSerializer):
     classroom = serializers.CharField(source='classroom.name', read_only=True)
@@ -18,17 +15,16 @@ class LessonScheduleSerializer(serializers.ModelSerializer):
         model = LessonSchedule
         fields = '__all__'
 
-class TeacherSerializer(serializers.ModelSerializer):
-    images = TeacherImageSerializer(many=True, read_only=True)
-    
-    class Meta:
-        model = Teacher
-        fields = '__all__'
 
 class GroupSerializer(serializers.ModelSerializer):
-    teachers = TeacherSerializer(many=True, read_only=True)
     lessons = LessonScheduleSerializer(many=True, read_only=True)
-    
+
     class Meta:
         model = Group
+        fields = '__all__'
+
+
+class RecordLinkSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = RecordLink
         fields = '__all__'

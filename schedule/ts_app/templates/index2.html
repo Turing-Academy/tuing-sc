@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="az">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Turing Community</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css"
+        integrity="sha512-dPXYcDub/aeb08c63jRq/k6GaKccl256JQy/AnOq7CAnEZ9FzSL9wSbcZkMp4R26vBsMLFYH4kQ67/bbV8XaCQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body class="bg-[#0A0B14] text-white font-sans">
+    <div id="content" class="min-h-screen p-4 pb-48 max-w-md mx-auto">
+        <!-- Bu kısım, kullanıcı belirli bir Wi-Fi ağına bağlıysa gösterilecek -->
+        <div id="mainContent" class="hidden">
+            <!-- Mevcut içerik buraya gelecek -->
+        </div>
+
+        <!-- Bu kısım, kullanıcı belirli bir Wi-Fi ağına bağlı değilse gösterilecek -->
+        <div id="wifiPrompt" class="hidden text-center">
+            <h1 class="text-2xl font-bold mb-4">Wi-Fi Bağlantısı Gerekli</h1>
+            <p class="mb-4">Lütfen belirli bir Wi-Fi ağına bağlanın veya Wi-Fi kodunu girin.</p>
+            <input type="text" id="wifiCodeInput" placeholder="Wi-Fi Kodunu Girin" class="p-2 rounded border border-gray-600 bg-transparent text-white mb-4">
+            <button onclick="checkWifiCode()" class="bg-blue-500 text-white px-4 py-2 rounded">Giriş Yap</button>
+        </div>
+    </div>
+
+    <script>
+        // Kullanıcının IP adresini almak için bir API kullanıyoruz
+        async function getUserIP() {
+            try {
+                const response = await fetch('https://api.ipify.org?format=json');
+                const data = await response.json();
+                return data.ip;
+            } catch (error) {
+                console.error("IP adresi alınamadı:", error);
+                return null;
+            }
+        }
+
+        // Belirli bir IP adresine bağlı olup olmadığını kontrol ediyoruz
+        async function checkWiFiConnection() {
+            const userIP = await getUserIP();
+            const allowedIP = "213.172.85.24"; // İzin verilen IP adresi
+
+            if (userIP === allowedIP) {
+                // Kullanıcı belirli bir Wi-Fi ağına bağlıysa, ana içeriği göster
+                document.getElementById("mainContent").classList.remove("hidden");
+                document.getElementById("wifiPrompt").classList.add("hidden");
+            } else {
+                // Kullanıcı belirli bir Wi-Fi ağına bağlı değilse, Wi-Fi kodu girmesini iste
+                document.getElementById("mainContent").classList.add("hidden");
+                document.getElementById("wifiPrompt").classList.remove("hidden");
+            }
+        }
+
+        // Wi-Fi kodunu kontrol eden fonksiyon
+        function checkWifiCode() {
+            const wifiCode = document.getElementById("wifiCodeInput").value;
+            const correctCode = "123456"; // Doğru Wi-Fi kodu
+
+            if (wifiCode === correctCode) {
+                // Kodu doğru girdiyse, ana içeriği göster
+                document.getElementById("mainContent").classList.remove("hidden");
+                document.getElementById("wifiPrompt").classList.add("hidden");
+            } else {
+                alert("Geçersiz Wi-Fi kodu! Lütfen tekrar deneyin.");
+            }
+        }
+
+        // Sayfa yüklendiğinde Wi-Fi bağlantısını kontrol et
+        window.onload = checkWiFiConnection;
+    </script>
+</body>
+
+</html>

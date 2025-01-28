@@ -4,9 +4,9 @@ from . import views
 
 router = routers.DefaultRouter()
 router.register(r'classrooms', views.ClassroomViewSet)
-router.register(r'teachers', views.TeacherViewSet)
 router.register(r'groups', views.GroupViewSet)
 router.register(r'lessons', views.LessonScheduleViewSet)
+router.register(r'records', views.RecordLinkViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),

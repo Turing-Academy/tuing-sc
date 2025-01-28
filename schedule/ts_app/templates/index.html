@@ -1,187 +1,300 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="az">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Weekly Schedule</title>
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'styles.css' %}">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f8f9fa;
-            margin: 0;
-            padding: 0;
-        }
+    <link rel="shortcut icon" href="" type="image/x-icon">
+    <title>Turing Community</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css"
+        integrity="sha512-dPXYcDub/aeb08c63jRq/k6GaKccl256JQy/AnOq7CAnEZ9FzSL9wSbcZkMp4R26vBsMLFYH4kQ67/bbV8XaCQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <meta name="description" content="Turing academy ders saatlati">
+    <meta name="keywords" content="Turing, Academy, Kurs, Cedvel, Dersler, Ders, Kurslar, Ders saati, Proqram">
+    <meta name="author" content="CC">
 
-        .container {
-            max-width: 1200px;
-            margin: 20px auto;
-            padding: 20px;
-            background: #ffffff;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
-        }
 
-        h1 {
-            text-align: center;
-            color: #343a40;
-        }
-
-        .schedule-list {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-            margin-top: 20px;
-        }
-
-        .day-schedule {
-            background: #f1f3f5;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
-        }
-
-        .day-schedule:hover {
-            transform: translateY(-5px);
-        }
-
-        .day-schedule h3 {
-            margin: 0 0 10px;
-            color: #495057;
-        }
-
-        .lesson-card {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            background: #ffffff;
-            padding: 15px;
-            margin-top: 10px;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-
-        .lesson-card img {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            object-fit: cover;
-        }
-
-        .lesson-info {
-            width: 100%;
-        }
-
-        .lesson-info p {
-            margin: 5px 0;
-            color: #212529;
-        }
-
-        .lesson-info p strong {
-            color: #495057;
-        }
-
-        @media (max-width: 768px) {
-            .lesson-card {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-        }
-
-        .teacher-container {
-            display: flex;
-            align-items: center;
-        }
-
-        .time-lesson-container {
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-
-        }
-    </style>
 </head>
 
-<body>
-    <div class="container">
-        <h1>Weekly Schedule</h1>
+<body class="bg-[#0A0B14] text-white font-sans">
+    <div class="min-h-screen p-4 pb-48 mx-auto">
+        <div class="mb-6 flex justify-between items-center">
+            <h1 class="text-xl font-bold tracking-tight block hidden">
+                TURING COMMUNITY
+            </h1>
 
-        <div id="scheduleList" class="schedule-list"></div>
+            <a href="/" alt="Turing Academy Community" target="_blank" rel="noopener noreferrer">
+                <svg xmlns="http://www.w3.org/2000/svg" width="120" height="44" viewBox="0 0 120 44" fill="none">
+                    <path d="M8.725 2.25L8.35 5.3H5.8L4.125 18.925H0.875L2.55 5.3H0L0.375 2.25H8.725Z" fill="white" />
+                    <path
+                        d="M19.7246 2.25L18.1996 14.675C18.0746 15.65 17.9496 16.4 17.3496 17.225C16.2996 18.7 14.4496 19.2 12.6996 19.2C10.2746 19.2 8.39961 18.175 8.39961 15.525C8.39961 15.1 8.47461 14.65 8.52461 14.225L9.99961 2.25H13.2496L11.8996 13.325C11.8496 13.75 11.7746 14.15 11.7746 14.575C11.7746 15.525 12.0996 16.2 13.1496 16.2C14.8996 16.2 14.9246 14.65 15.0996 13.325L16.4746 2.25H19.7246Z"
+                        fill="white" />
+                    <path
+                        d="M22.2799 2.25H25.8049C26.9549 2.25 28.3049 2.35 29.2799 3.05C30.3549 3.825 30.7549 5.15 30.7549 6.425C30.7549 8.6 29.7299 10.25 27.8549 11.35L29.7799 18.925H26.3799L24.4299 11.25L23.4799 18.925H20.2299L22.2799 2.25ZM25.2049 4.85L24.6549 9.425C24.8299 9.45 24.9799 9.45 25.1549 9.45C26.7799 9.45 27.5799 8.175 27.5799 6.675C27.5799 5.475 27.0549 4.85 25.8299 4.85H25.2049Z"
+                        fill="white" />
+                    <path d="M37.1754 2.25L35.1254 18.925H31.8754L33.9254 2.25H37.1754Z" fill="white" />
+                    <path
+                        d="M49.9109 2.25L47.8609 18.925H44.8109L42.0109 8.875C42.0109 9.6 42.0109 10.3 41.9109 11.025L40.9359 18.925H37.6859L39.7359 2.25H42.8109L45.6109 12.325C45.5859 11.925 45.5859 11.525 45.5859 11.125C45.5859 10.75 45.5859 10.4 45.6359 10.025L46.6109 2.25H49.9109Z"
+                        fill="white" />
+                    <path
+                        d="M62.3301 5.95L59.0051 7.2C59.0051 6.225 58.8801 4.9 57.6051 4.9C55.0051 4.9 54.4051 10.975 54.4051 12.85C54.4051 14.125 54.5801 16.2 56.3051 16.2C58.0551 16.2 58.5301 13.95 58.7301 12.6H56.6551L57.0051 9.65H62.3051C62.1301 11.275 61.9551 12.9 61.4301 14.45C60.6051 16.95 58.7051 19.2 55.8801 19.2C52.2301 19.2 50.9551 15.75 50.9551 12.65C50.9551 11.175 51.1301 9.675 51.5051 8.25C52.3301 5.175 54.4301 2 57.9551 2C60.4551 2 61.9301 3.55 62.3301 5.95Z"
+                        fill="white" />
+                    <path
+                        d="M8.2 37.05L7.725 40.5C7.025 40.85 6.225 41.1 5.2 41.1C3.95 41.1 2.825 40.75 1.875 39.775C0.825 38.7 0.175 36.875 0.175 34.625C0.175 31.675 1.15 27.9 3.4 25.8C4.55 24.7 5.975 24.075 7.875 24.075C8.625 24.075 9.25 24.2 9.975 24.55L9.5 28.025C8.825 27.325 8.075 27.225 7.675 27.225C6.925 27.225 6.225 27.6 5.675 28.125C4.35 29.45 3.675 32.425 3.675 34.375C3.675 34.9 3.75 36.25 4.4 37.1C4.925 37.775 5.625 37.925 6.075 37.925C6.7 37.925 7.5 37.7 8.2 37.05Z"
+                        fill="white" />
+                    <path
+                        d="M22.0574 30.075C22.0574 31.975 21.8074 34.175 21.1824 35.95C20.2324 38.675 18.1324 41.2 15.0324 41.2C13.4074 41.2 11.8824 40.225 11.0824 38.85C10.3574 37.625 10.2074 36.3 10.2074 34.9C10.2074 33.375 10.3574 31.825 10.7574 30.35C11.5574 27.2 13.6324 24 17.2324 24C20.5824 24 22.0574 27.125 22.0574 30.075ZM18.5824 30.25C18.5824 29.125 18.3074 27.025 16.8074 27.025C14.9074 27.025 14.0824 30.5 13.8824 31.975C13.7324 32.9 13.6824 33.85 13.6824 34.8C13.6824 35.9 13.9824 38.025 15.4574 38.025C17.3824 38.025 18.1824 34.55 18.3824 33.075C18.5324 32.15 18.5824 31.2 18.5824 30.25Z"
+                        fill="white" />
+                    <path
+                        d="M37.4869 24.25L37.1619 40.925H33.8369L34.4869 28.925C34.2619 30.225 33.9119 31.5 33.5369 32.775L31.0869 40.925H28.5869C28.3619 38.125 28.0869 35.325 27.9619 32.525C27.9369 31.7 27.8619 30.85 27.8619 30.025C27.8619 29.65 27.8869 29.3 27.9119 28.925L25.9369 40.925H22.4369L25.9369 24.25H30.2119L30.6119 34.1L33.1369 24.25H37.4869Z"
+                        fill="white" />
+                    <path
+                        d="M53.3805 24.25L53.0555 40.925H49.7305L50.3805 28.925C50.1555 30.225 49.8055 31.5 49.4305 32.775L46.9805 40.925H44.4805C44.2555 38.125 43.9805 35.325 43.8555 32.525C43.8305 31.7 43.7555 30.85 43.7555 30.025C43.7555 29.65 43.7805 29.3 43.8055 28.925L41.8305 40.925H38.3305L41.8305 24.25H46.1055L46.5055 34.1L49.0305 24.25H53.3805Z"
+                        fill="white" />
+                    <path
+                        d="M66.624 24.25L65.099 36.675C64.974 37.65 64.849 38.4 64.249 39.225C63.199 40.7 61.349 41.2 59.599 41.2C57.174 41.2 55.299 40.175 55.299 37.525C55.299 37.1 55.374 36.65 55.424 36.225L56.899 24.25H60.149L58.799 35.325C58.749 35.75 58.674 36.15 58.674 36.575C58.674 37.525 58.999 38.2 60.049 38.2C61.799 38.2 61.824 36.65 61.999 35.325L63.374 24.25H66.624Z"
+                        fill="white" />
+                    <path
+                        d="M79.3543 24.25L77.3043 40.925H74.2543L71.4543 30.875C71.4543 31.6 71.4543 32.3 71.3543 33.025L70.3793 40.925H67.1293L69.1793 24.25H72.2543L75.0543 34.325C75.0293 33.925 75.0293 33.525 75.0293 33.125C75.0293 32.75 75.0293 32.4 75.0793 32.025L76.0543 24.25H79.3543Z"
+                        fill="white" />
+                    <path d="M85.1734 24.25L83.1234 40.925H79.8734L81.9234 24.25H85.1734Z" fill="white" />
+                    <path
+                        d="M94.809 24.25L94.434 27.3H91.884L90.209 40.925H86.959L88.634 27.3H86.084L86.459 24.25H94.809Z"
+                        fill="white" />
+                    <path
+                        d="M106.59 24.25L101.615 33.8L100.715 40.925H97.4648L98.3398 33.8L95.5898 24.25H99.1648L99.9898 28.075C100.115 28.6 100.29 29.95 100.34 30.35C100.665 29.425 100.94 28.8 101.29 28L102.965 24.25H106.59Z"
+                        fill="white" />
+                </svg>
 
+            </a>
+
+            <a id="dynamic-link" href="#" alt="Turing whatsapp navigation - click and communicate." target="_blank"
+                rel="noopener noreferrer" class="block rounded-full border border-[1px] text-center p-[12px]"
+                style="background-color: rgba(255, 255, 255, 0.04); backdrop-filter: blur(8px);">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-camera-video-fill" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd"
+                        d="M0 5a2 2 0 0 1 2-2h7.5a2 2 0 0 1 1.983 1.738l3.11-1.382A1 1 0 0 1 16 4.269v7.462a1 1 0 0 1-1.406.913l-3.111-1.382A2 2 0 0 1 9.5 13H2a2 2 0 0 1-2-2z" />
+                </svg>
+            </a>
+
+
+        </div>
+
+        <div class="mb-6">
+            <div id="currentDate" class="text-[#fff] mb-2 font-inter text-[16px]"></div>
+            <h2 class="text-2xl mb-4 text-[#fff]">
+                <span class="" style="color: rgba(255, 255, 255, 0.80);"><span id="dateLabel">Bugün</span>
+                    akademiyamızda</span><br>
+                ümumi <span id="classCount">0</span> dərs <span id="oldDayCheck">var.</span>
+            </h2>
+        </div>
+
+        <div class="mb-6 overflow-x-auto">
+            <div id="dayPills" class="flex gap-2 w-max"></div>
+        </div>
+
+        <div id="classCards" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8"></div>
+
+        <div class="bottom-0 left-0 right-0 bg-[#0A0B14] p-4">
+            <div class="w-full space-y-4 text-left">
+                <p class="text-[#fff] text-[18px] font-inter font-normal text-left">
+                    <i>
+                        Dərs saatları ilə bağlı <span class="text-white font-bold">problem bildirmək</span><br>
+                        və ya <span class="text-white font-bold">dərs saatı əlavə etmək</span> üçün
+                    </i>
+                </p>
+                <a href="https://wa.me/+994105158665"
+                    class="left-0 bg-[rgba(255, 255, 255, 0.04)] w-full md:w-[80%] lg:w-[30%] py-3 rounded-full border border-[rgba(255, 255, 255, 0.12)] flex items-center justify-center gap-2"
+                    style="backdrop-filter: blur(8px);">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25" fill="none">
+                        <path
+                            d="M17.3304 6.57498C15.7929 4.99998 13.6929 4.09998 11.4429 4.09998C6.86794 4.09998 3.11794 7.84998 3.11794 12.425C3.11794 13.925 3.53044 15.35 4.24294 16.5875L3.08044 20.9L7.46794 19.775C8.70544 20.4125 10.0554 20.7875 11.4429 20.7875C16.0554 20.7875 19.8804 17.0375 19.8804 12.4625C19.8804 10.2125 18.9054 8.14998 17.3304 6.57498ZM11.4429 19.3625C10.2054 19.3625 9.00544 19.025 7.91794 18.3875L7.69294 18.2375L5.06794 18.95L5.78044 16.4L5.59294 16.1375C4.91794 15.0125 4.54294 13.7375 4.54294 12.425C4.54294 8.63748 7.65544 5.52498 11.4804 5.52498C13.3179 5.52498 15.0429 6.23748 16.3554 7.54998C17.6679 8.86248 18.4554 10.5875 18.4554 12.4625C18.4554 16.25 15.2679 19.3625 11.4429 19.3625ZM15.2679 14.1875C15.0429 14.075 14.0304 13.5875 13.8429 13.5125C13.6554 13.4375 13.5054 13.4 13.3554 13.625C13.2429 13.8125 12.8304 14.3 12.7179 14.45C12.5679 14.5625 12.4554 14.6 12.2679 14.4875C11.0304 13.8875 10.2429 13.4 9.41794 12.0125C9.19294 11.6375 9.64294 11.675 10.0179 10.8875C10.0929 10.7375 10.0554 10.625 10.0179 10.5125C9.98044 10.4 9.53044 9.38748 9.38044 8.97498C9.19294 8.56248 9.04294 8.59998 8.89294 8.59998C8.78044 8.59998 8.63044 8.59998 8.51794 8.59998C8.36794 8.59998 8.14294 8.63748 7.95544 8.86248C7.76794 9.08748 7.24294 9.57498 7.24294 10.5875C7.24294 11.6375 7.95544 12.6125 8.06794 12.7625C8.18044 12.875 9.53044 14.975 11.6304 15.875C12.9429 16.475 13.4679 16.5125 14.1429 16.4C14.5179 16.3625 15.3429 15.9125 15.5304 15.425C15.7179 14.9375 15.7179 14.525 15.6429 14.45C15.6054 14.3375 15.4554 14.3 15.2679 14.1875Z"
+                            fill="white" />
+                    </svg>
+                    <span class="font-bold ital text-[25px]"><i>ƏLAQƏ SAXLAYIN</i></span>
+                </a>
+                <p class="text-gray-600 text-sm w-full text-center">Turing Community ©2025</p>
+            </div>
+        </div>
     </div>
 
-
-
     <script>
-        const API_URL = "http://127.0.0.1:8000/api/groups/";
-        const scheduleList = document.getElementById("scheduleList");
-        const daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-
-        async function fetchGroups() {
-            try {
-                const response = await fetch(API_URL);
-                if (!response.ok) {
-                    throw new Error("Failed to fetch groups");
-                }
-                const groups = await response.json();
-                displaySchedule(groups);
-            } catch (error) {
-                console.error("Error:", error);
-                scheduleList.innerHTML = "<p>Failed to load schedule. Please try again later.</p>";
+        class Day {
+            constructor(id, name) {
+                this.id = id;
+                this.name = name;
             }
         }
 
-        function displaySchedule(groups) {
-            scheduleList.innerHTML = "";
-            daysOfWeek.forEach((day) => {
-                const daySchedule = document.createElement("div");
-                daySchedule.className = "day-schedule";
-                daySchedule.innerHTML = `<h3>${day}</h3>`;
+        class Course {
+            constructor(id, name, classroom, day, time) {
+                this.id = id;
+                this.name = name;
+                this.classroom = classroom;
+                this.day = day;
+                this.time = time;
+            }
 
-                let hasLessons = false;
-                groups.forEach((group) => {
-                    const dayLessons = group.lessons.filter((lesson) => lesson.day.toLowerCase() === day.substring(0, 3).toLowerCase());
+            formatTime() {
+                let formattedTime = this.time.replace(/:\d{2}$/, '');
 
-                    if (dayLessons.length > 0) {
-                        hasLessons = true;
-                        dayLessons.forEach((lesson) => {
-                            const teacher = group.teachers.find((t) => t.group === group.id) || group.teachers[0];
-                            const lessonCard = document.createElement("div");
-                            lessonCard.className = "lesson-card";
-                            lessonCard.innerHTML = `
-                                <h2>${group.name}</h2>
-                                <div class="lesson-info">
-                                    
-                                    <p></p>
-                                    <div class="time-lesson-container">
-                                        <p><strong>Room:</strong> ${lesson.classroom}</p>
-                                        <p><strong>${lesson.time}</strong></p>
-                                    </div>
-                                    <hr>
-                                    <div class="teacher-container">
-                                        <img src="${teacher.image}" alt="${teacher.name} ${teacher.surname}" class="teacher-image">
-                                        <p><strong>${teacher.name} ${teacher.surname}</strong></p>
-                                    </div>
-                                    
-                                </div>
-                            `;
-                            daySchedule.appendChild(lessonCard);
-                        });
-                    }
-                });
+                const [hour, minute] = formattedTime.split(':');
+                const startHour = parseInt(hour, 10);
 
-                if (!hasLessons) {
-                    daySchedule.innerHTML += "<p>No lessons scheduled</p>";
-                }
+                const endHour = startHour + 2;
+                const startTime = `${hour}:${minute}`;
+                const endTime = `${endHour.toString().padStart(2, '0')}:${minute}`;
 
-                scheduleList.appendChild(daySchedule);
-            });
+                return `${startTime} - ${endTime}`;
+            }
         }
 
-        fetchGroups();
+        class App {
+            constructor() {
+                this.days = [
+                    new Day("MON", "Bazar e."),
+                    new Day("TUE", "Çərşənbə a."),
+                    new Day("WED", "Çərşənbə"),
+                    new Day("THU", "Cümə a."),
+                    new Day("FRI", "Cümə"),
+                    new Day("SAT", "Şənbə"),
+                    new Day("SUN", "Bazar"),
+                ];
+
+                this.today = new Date().toLocaleDateString('az-AZ', { weekday: 'short' }).toUpperCase();
+                this.selectedDay = this.days.find(day => day.id === this.today)?.id || "MON";
+                this.allClasses = [];
+
+                this.init();
+            }
+
+            async init() {
+                this.updateDate();
+                this.createDayPills();
+                this.updateDateLabel();
+                await this.fetchData();
+                await this.fetchDynamicUrl();
+
+            }
+
+            async fetchData() {
+                try {
+                    const response = await fetch('/api/groups/');
+                    const data = await response.json();
+                    this.allClasses = data.flatMap(course =>
+                        course.lessons.map(lesson => new Course(
+                            course.id,
+                            course.name,
+                            lesson.classroom,
+                            lesson.day,
+                            lesson.time
+                        ))
+                    );
+                    this.updateClassCards();
+                } catch (error) {
+                    console.error('Error fetching data:', error);
+                }
+            }
+
+            async fetchDynamicUrl() {
+                try {
+                    const response = await fetch('/api/records/last/');
+                    const data = await response.json();
+                    const dynamicLink = document.getElementById('dynamic-link');
+                    dynamicLink.href = data.url;
+                } catch (error) {
+                    console.error('Error fetching dynamic URL:', error);
+                }
+            }
+
+            updateDate() {
+                const dateElement = document.getElementById("currentDate");
+                const months = {
+                    1: "Yanvar", 2: "Fevral", 3: "Mart", 4: "Aprel", 5: "May", 6: "İyun",
+                    7: "İyul", 8: "Avqust", 9: "Sentyabr", 10: "Oktyabr", 11: "Noyabr", 12: "Dekabr"
+                };
+                const currentDate = new Date();
+                const day = currentDate.getDate();
+                const month = currentDate.getMonth() + 1;
+                dateElement.textContent = `${day} ${months[month]}`;
+            }
+
+            createDayPills() {
+                const pillsContainer = document.getElementById("dayPills");
+                this.days.forEach(day => {
+                    const button = document.createElement("button");
+                    button.textContent = day.name;
+                    button.className = `px-4 py-2 rounded-full text-sm border border-[1px] whitespace-nowrap ${this.selectedDay === day.id ? "bg-[#2BA6EB]" : "bg-[transparent]"}`;
+                    button.onclick = () => this.selectDay(day.id);
+                    pillsContainer.appendChild(button);
+                });
+            }
+
+            selectDay(dayId) {
+                this.selectedDay = dayId;
+                this.updateDayPills();
+                this.updateClassCards();
+                this.updateDateLabel();
+            }
+
+            updateDayPills() {
+                const pills = document.querySelectorAll("#dayPills button");
+                pills.forEach(pill => {
+                    const dayId = this.days.find(day => day.name === pill.textContent).id;
+                    pill.className = `px-4 py-2 rounded-full text-sm border border-[1px] whitespace-nowrap ${this.selectedDay === dayId ? "bg-[#2BA6EB]" : "bg-[transparent]"}`;
+                });
+            }
+
+            updateDateLabel() {
+                const dateLabelElement = document.getElementById("dateLabel");
+                const oldDayCheckElement = document.getElementById("oldDayCheck");
+                const todayIndex = this.days.findIndex(day => day.id === this.today);
+                const selectedDayIndex = this.days.findIndex(day => day.id === this.selectedDay);
+
+                if (selectedDayIndex === todayIndex) {
+                    dateLabelElement.textContent = "Bugün";
+                    oldDayCheckElement.textContent = "var.";
+                } else if (selectedDayIndex === todayIndex - 1) {
+                    dateLabelElement.textContent = "Dünən";
+                    oldDayCheckElement.textContent = "olub.";
+                } else if (selectedDayIndex === todayIndex + 1) {
+                    dateLabelElement.textContent = "Sabah";
+                    oldDayCheckElement.textContent = "olacaq.";
+                } else {
+                    const selectedDayName = this.days.find(day => day.id === this.selectedDay).name;
+                    dateLabelElement.textContent = `${selectedDayName} günü`;
+                    oldDayCheckElement.textContent = "olacaq.";
+                }
+            }
+            updateClassCards() {
+                const cardsContainer = document.getElementById("classCards");
+                cardsContainer.innerHTML = "";
+                const filteredClasses = this.allClasses.filter(course => course.day === this.selectedDay);
+                filteredClasses.forEach(course => {
+                    const card = document.createElement("div");
+                    card.className = "bg-[transparent] p-4 rounded-[16px] flex justify-between items-center border border-[1px]";
+                    card.innerHTML = `
+                        <div>
+                            <div class="font-inter text-[24px] text-[#fff] font-semibold mb-1">${course.name}</div>
+                            <div class="text-[#A2A1A4] text-inter font-normal text-[14px]">${course.formatTime()}</div>
+                        </div>
+                        <span class="bg-[transparent] px-3 py-1 rounded text-sm text-[#B5B6BE] border border-[1px] border-[#4A5567] rounded-[6px]">${course.classroom}</span>
+                    `;
+                    cardsContainer.appendChild(card);
+                });
+                this.updateClassCount(filteredClasses.length);
+            }
+
+            updateClassCount(count) {
+                document.getElementById("classCount").textContent = count;
+
+            }
+        }
+
+        new App();
     </script>
 </body>
 
